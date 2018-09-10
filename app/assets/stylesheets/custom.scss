@@ -1,6 +1,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+$gray:#F2F2F2;
+
 body{
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   font-size:14px;
@@ -11,22 +13,23 @@ body{
 
 #header{
   height: 50px;
-  background-color:#ECCEF5;
-  background: -webkit-linear-gradient(left, #ECCEF5, 	#CEF6EC);
-  background: -moz-linear-gradient(left, #ECCEF5,	#CEF6EC);
-  background: linear-gradient(to right,#ECCEF5, #CEF6EC);
+  color:$gray;
+  background: -webkit-linear-gradient(left, #819FF7, 	#A9F5D0);
+  background: -moz-linear-gradient(left, #819FF7,	#A9F5D0);
+  background: linear-gradient(to right,#819FF7, #A9F5D0);
   
   p{
-    margin: 0 0 0 0;
+    display: inline-block;
     width: 300px;
     font-size: 25px;
-    padding: 10px 25px;
-    
+    padding: 10px;
   }
   
-  input{
+  li{
     float: right;
-    margin: 10px 25px;
+    list-style:none;
+    margin-right:10px;
+    padding: 15px 5px 2px 5px;
   }
 }
 
@@ -35,4 +38,9 @@ body{
   width: 100%;
   text-align:center;
   
+}
+
+.balloon{
+  width:100%;
+  height:auto;
 }
