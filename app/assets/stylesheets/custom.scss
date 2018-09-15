@@ -11,6 +11,10 @@ body{
   margin: 0 0 0 0;
 }
 
+li{
+  list-style:none;
+}
+
 #header{
   height: 50px;
   color:$gray;
@@ -27,7 +31,6 @@ body{
   
   li{
     float: right;
-    list-style:none;
     margin-right:10px;
     padding: 15px 5px 2px 5px;
   }
