@@ -28,14 +28,17 @@ li{
     font-size: 25px;
     padding: 13px;
   }
+}
+
+#header-link{
+  float: right;
   
   li{
-    float: right;
+    float: left;
     margin-right:10px;
     padding: 15px 5px 2px 5px;
   }
 }
-
 
 #footer{
   width: 100%;
