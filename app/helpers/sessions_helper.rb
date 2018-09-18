@@ -4,8 +4,19 @@ module SessionsHelper
   session[:host_id] = host.id
  end
  
+ def current_host
+  if session[:host_id]
+   @current_host ||= Host.find_by(id: session[:host_id])
+  end
+ end
+ 
+ def logged_in?
+  !current_host.nil?
+ end
+ 
  def log_out
   session.delete(:host_id)
   @current_host = nil
  end
+ 
 end

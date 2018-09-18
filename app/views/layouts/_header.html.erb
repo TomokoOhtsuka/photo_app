@@ -2,9 +2,14 @@
   <span style="font-family: 'Comic Sans MS Bold';"><b><p>Something Blue</p></b></span>
   <!-- <input type="submit" value="Log in"></input>　-->
   <div id="header-link">
-    <li><%= link_to("home", "/")%></li>
-    <li><%= link_to("concept", "/about")%></li>
-    <li><%= link_to("login", "/login")%></li>
-    <li><%= link_to("logout", "/logout", {method: "post"} )%></li>
+    <% if logged_in? %>
+      <li><%= link_to(@current_host.name, "/hosts/#{@current_host.id}")%></li>
+      <li><%= link_to("concept", "/about")%></li>
+      <li><%= link_to("logout", "/logout", {method: "post"} )%></li>
+    <% else %>
+      <li><%= link_to("home", "/")%></li>
+      <li><%= link_to("concept", "/about")%></li>
+      <li><%= link_to("login", "/login")%></li>
+    <% end %>
   </div>
 </div>

@@ -6,6 +6,8 @@ class HostsController < ApplicationController
   def create
     @host = Host.new(host_params)
     if @host.save
+      log_in @host
+      flash.now[:success] = "アカウントを作成しました"
       redirect_to("/hosts/#{@host.id}")
     else
       render("hosts/new")
