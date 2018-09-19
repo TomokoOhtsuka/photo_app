@@ -1,4 +1,6 @@
 class HostsController < ApplicationController
+  before_action :logged_in_host, only: [:show, :edit, :update]
+  
   def new
     @host = Host.new
   end
@@ -9,12 +11,14 @@ class HostsController < ApplicationController
       log_in @host
       redirect_to host_path(@host), flash: { success: "アカウントを作成しました" }
     else
-      render :new  #コントローラーの中はコロンつけてアクション名でいける！
+      render :new
+      #コントローラーの中はコロンつけてアクション名でいける！
     end
   end
   
   def show
     #ここで@host = Host.find_by(…)とすると、URLに違う人のidを入れた時に見れちゃうから空でOK
+    #@event = Event.@current_host.id.all
   end
 
 
