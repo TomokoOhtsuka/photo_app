@@ -7,15 +7,14 @@ class HostsController < ApplicationController
     @host = Host.new(host_params)
     if @host.save
       log_in @host
-      flash.now[:success] = "アカウントを作成しました"
-      redirect_to("/hosts/#{@host.id}")
+      redirect_to host_path(@host), flash: { success: "アカウントを作成しました" }
     else
-      render("hosts/new")
+      render :new  #コントローラーの中はコロンつけてアクション名でいける！
     end
   end
   
   def show
-    @host = Host.find_by(id: params[:id])
+    #ここで@host = Host.find_by(…)とすると、URLに違う人のidを入れた時に見れちゃうから空でOK
   end
 
 
