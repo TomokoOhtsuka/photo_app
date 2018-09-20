@@ -18,7 +18,8 @@ class EventsController < ApplicationController
   
   private
     def event_params
-      params.require(:event).permit(:title, :description)
+      params.require(:events).permit(:title, :description)
+      #(:events)と複数形にする？ブラウザのデバッグのリクエストは複数形だけど、チュートリアルでは単数系になってる
     end
   
 end
