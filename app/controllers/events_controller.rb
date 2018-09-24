@@ -5,6 +5,7 @@ class EventsController < ApplicationController
   end
   
   def create
+    @host = current_host
     @event = current_host.events.build(event_params)
     if @event.save
       redirect_to host_path(@host), flash: { success: "イベントを作成しました" }
@@ -18,6 +19,7 @@ class EventsController < ApplicationController
   
   private
     def event_params
+      binding.pry
       params.require(:events).permit(:title, :description)
       #(:events)と複数形にする？ブラウザのデバッグのリクエストは複数形だけど、チュートリアルでは単数系になってる
     end

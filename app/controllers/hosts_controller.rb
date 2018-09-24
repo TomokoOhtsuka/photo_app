@@ -17,8 +17,9 @@ class HostsController < ApplicationController
   end
   
   def show
+    @host = Host.find(params[:id])
     #ここで@host = Host.find_by(…)とすると、URLに違う人のidを入れた時に見れちゃうから空でOK
-    #@event = Event.@current_host.id.all
+    @events = @host.events.all
   end
 
 
