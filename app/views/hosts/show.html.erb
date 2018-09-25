@@ -1,2 +1,5 @@
-<li><%= @current_host.name %>さんのフォトアルバム一覧</li>
 <li><%= link_to("フォトアルバムを作成する", "/hosts/#{@current_host.id}/events/new") %></li>
+<li><%= @current_host.name %>さんのフォトアルバム一覧</li>
+<% @events.each do |event| %>
+<li><%= link_to(event.title,"#") %></li>
+<% end %>

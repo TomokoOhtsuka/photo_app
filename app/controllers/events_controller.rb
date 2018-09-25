@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   before_action :logged_in_host, only: [:create, :destroy]
   
   def new
+   @event = current_host.events.build if logged_in?
   end
   
   def create
@@ -19,9 +20,8 @@ class EventsController < ApplicationController
   
   private
     def event_params
-      binding.pry
-      params.require(:events).permit(:title, :description)
-      #(:events)と複数形にする？ブラウザのデバッグのリクエストは複数形だけど、チュートリアルでは単数系になってる
+      params.require(:event).permit(:title, :description)
+                     #↑このeventはform_forからきている
     end
   
 end

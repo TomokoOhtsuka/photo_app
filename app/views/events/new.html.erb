@@ -1,15 +1,18 @@
 <div class="event-making">
-  <%= form_for(:events, url: "/hosts/#{@current_host.id}/events/new") do |f| %>
- 　<div class="col-md-6 col-md-offset-3">
- 　  <!--<# render("shared/event.error.messages") %>-->
+  <% binding.pry %>
+  <%= form_for(@event) do |f| %>
+    <div class="col-md-6 col-md-offset-3">
+     
+      <%= render("shared/error.messages", object: f.object) %>
  　  
-     <%= f.label :title, "イベント名" %>
-     <%= f.text_field :title, class: "form-control" %>
+      <%= f.label :title, "イベント名" %>
+      <%= f.text_field :title, class: "form-control" %>
    
-     <%= f.label :description, "メモ" %>
-     <%= f.text_area :description, class: "form-control" %>
+      <%= f.label :description, "メモ" %>
+      <%= f.text_area :description, class: "form-control" %>
    
-     <%= f.submit "イベント作成", class: "btn btn-primary" %>
-     <% end %>
+      <%= f.submit "イベント作成", class: "btn btn-primary" %>
     </div>    
+  <% end %>
+  
 </div>
