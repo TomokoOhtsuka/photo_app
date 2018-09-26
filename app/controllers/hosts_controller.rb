@@ -21,7 +21,7 @@ class HostsController < ApplicationController
     #ここで@host = Host.find_by(…)とすると、URLに違う人のidを入れた時に見れちゃうから空でOK
     #とはいえ、ここで@hostを定義しないと、作成したイベント一覧を掲載することができない…？
     @events = @host.events.all
-    #@event = current_host.events.build if logged_in? ←newアクションで定義
+    #@event = current_host.events.build if logged_in? ←event#newで定義
   end
 
 

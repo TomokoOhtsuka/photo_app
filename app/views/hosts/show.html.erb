@@ -1,5 +1,5 @@
-<li><%= link_to("フォトアルバムを作成する", event_path) %></li>
+<li><%= link_to("フォトアルバムを作成する", new_event_path) %></li>
 <li><%= @current_host.name %>さんのフォトアルバム一覧</li>
 <% @events.each do |event| %>
-<li><%= link_to(event.title,"#") %></li>
+<li><%= link_to(event.title, event_path) %></li>
 <% end %>
