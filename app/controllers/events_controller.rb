@@ -1,7 +1,8 @@
 class EventsController < ApplicationController
-  before_action :logged_in_host, only: [:create, :destroy]
+  before_action :logged_in_host, only: [:new, :create, :destroy]
   
   def new
+   binding.pry
    @event = current_host.events.build if logged_in?
   end
   

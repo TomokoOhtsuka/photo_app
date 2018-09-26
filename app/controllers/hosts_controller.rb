@@ -1,5 +1,5 @@
 class HostsController < ApplicationController
-  before_action :logged_in_host, only: [:show, :edit, :update]
+  before_action :logged_in_host, only: [:new, :create, :show]
   
   def new
     @host = Host.new
@@ -21,7 +21,7 @@ class HostsController < ApplicationController
     #ここで@host = Host.find_by(…)とすると、URLに違う人のidを入れた時に見れちゃうから空でOK
     #とはいえ、ここで@hostを定義しないと、作成したイベント一覧を掲載することができない…？
     @events = @host.events.all
-    @event = current_host.events.build if logged_in?
+    #@event = current_host.events.build if logged_in? ←newアクションで定義
   end
 
 
