@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
     if @host && @host.authenticate(params[:session][:password])
       log_in @host
-      redirect_to host_path(@host), flash: { success: "ログインしました" }
+      redirect_to events_path(@event), flash: { success: "ログインしました" }
       #redirect_toの場合はflashは第二引数にハッシュで渡してあげる
     else
       flash.now[:danger] = "メールアドレスまたはパスワードが正しくありません"

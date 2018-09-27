@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_19_062836) do
+ActiveRecord::Schema.define(version: 2018_09_27_071853) do
 
   create_table "events", force: :cascade do |t|
     t.string "title"
@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(version: 2018_09_19_062836) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.string "photo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "event_id"
   end
 
 end

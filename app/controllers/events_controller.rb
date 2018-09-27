@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :logged_in_host, only: [:new, :create, :destroy]
+  before_action :logged_in_host, only: [:new, :create, :index, :destroy]
   
   def new
    @event = current_host.events.build if logged_in?
@@ -9,14 +9,18 @@ class EventsController < ApplicationController
     @host = current_host
     @event = current_host.events.build(event_params)
     if @event.save
-      redirect_to host_path(@host), flash: { success: "イベントを作成しました" }
+      redirect_to events_path(@event), flash: { success: "イベントを作成しました" }
     else
       render :new
     end
   end
   
-  def show
-    
+  def index
+    #@host = Host.find(params[:id])
+    #ここで@host = Host.find_by(…)とすると、URLに違う人のidを入れた時に見れちゃう。
+    #sessionでcurrent_hostを定義しているから、@host=…などとしなくても、
+    #コレ↓だけで値は取ってこれる！
+    @events = current_host.events
   end
   
   def destroy
