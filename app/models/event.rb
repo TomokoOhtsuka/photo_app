@@ -1,6 +1,5 @@
-class Event <  ApplicationRecord
-  belongs_to :host, dependent: :destroy
-  default_scope -> { order(created_at: :desc) }
-  validates :title, { presence: true, length: { maximum: 20 }}
-  validates :host_id, { presence: true }
+class Event < ApplicationRecord
+  belongs_to :hosts
+  has_many :photos
+  validates :title, {presence: true}
 end

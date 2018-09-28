@@ -1,9 +1,8 @@
 <div id="header">
   <span style="font-family: 'Comic Sans MS Bold';"><b><p>Something Blue</p></b></span>
-  <!-- <input type="submit" value="Log in"></input>　-->
   <div id="header-link">
     <% if logged_in? %>
-      <li><%= link_to(@current_host.name, "/hosts/#{@current_host.id}")%></li>
+      <li><%= link_to(@current_host.name, events_path)%></li>
       <li><%= link_to("concept", "/about")%></li>
       <li><%= link_to("logout", "/logout", {method: "post"} )%></li>
     <% else %>
