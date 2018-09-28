@@ -21,6 +21,7 @@ class EventsController < ApplicationController
     #sessionでcurrent_hostを定義しているから、@host=…などとしなくても、
     #コレ↓だけで値は取ってこれる！
     @events = current_host.events
+    @photo = current_event.photos.build(photo_params)
   end
   
   def destroy
