@@ -1,18 +1,14 @@
 class PhotosController < ApplicationController
-  #before_action :logged_in_host, only:[:new, :create, :show, :destroy]
+  before_action :logged_in_host, only:[:create, :destroy]
 
   def create
     binding.pry
-    @photo = Photo.new(photo_params)
-    #@photo = current_event.photos.build(photo_params)
+    @photo = current_event.photos.build(photo_params)
     if @photo.save
-      redirect_to photos_path, flash: {success: "写真をアップロードしました"}
+      redirect_to event_path, flash: {success: "写真をアップロードしました"}
     else
-      render("events/index")
+      render "events/show"
     end
-  end
-  
-  def show
   end
   
   def destroy

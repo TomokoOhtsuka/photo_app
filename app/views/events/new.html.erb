@@ -1,7 +1,6 @@
 <div class="event-making">
   <%= form_for(@event) do |f| %>
     <div class="col-md-6 col-md-offset-3">
-     
       <%= render("shared/error.messages", object: f.object) %>
  　  
       <%= f.label :title, "イベント名" %>

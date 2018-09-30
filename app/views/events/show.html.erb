@@ -2,11 +2,10 @@
 
 <li>写真を投稿する</li>
 <div class="uploading-photos">
-  <% binding.pry%>
   <%= form_for(@photo) do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
+    <%= render("shared/error.messages", object: f.object) %>
   <span class="picture">
-    <%= f.file_field :picture %>
+    <%= f.file_field :image %>
   </span>
     <%= f.submit "Post", class: "btn btn-primary" %>
   <% end %>

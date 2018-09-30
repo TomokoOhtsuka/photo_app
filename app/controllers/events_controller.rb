@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :logged_in_host, only: [:new, :create, :index, :destroy]
+  before_action :logged_in_host, only: [:new, :create, :index, :show, :destroy]
   
   def new
    @event = current_host.events.build if logged_in?
@@ -21,7 +21,10 @@ class EventsController < ApplicationController
     #sessionでcurrent_hostを定義しているから、@host=…などとしなくても、
     #コレ↓だけで値は取ってこれる！
     @events = current_host.events
-    @photo = current_event.photos.build(photo_params)
+  end
+  
+  def show
+    @photo = current_event.photos.build
   end
   
   def destroy
