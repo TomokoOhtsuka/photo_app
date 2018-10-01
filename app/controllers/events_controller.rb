@@ -24,7 +24,8 @@ class EventsController < ApplicationController
   end
   
   def show
-    @photo = current_event.photos.build
+    #@photo = current_event.photos.build
+    @photo = Photo.new
   end
   
   def destroy

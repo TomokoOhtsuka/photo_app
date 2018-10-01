@@ -1,5 +1,4 @@
 class HostsController < ApplicationController
-  before_action :logged_in_host, only: [:new, :create, :show]
   
   def new
     @host = Host.new
