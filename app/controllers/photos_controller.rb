@@ -3,10 +3,9 @@ class PhotosController < ApplicationController
   
   def create
     @photo = Photo.new(photo_params)
-    binding.pry
     #@photo = current_event.photos.build(photo_params)
     if @photo.save
-      redirect_to event_path, flash: {success: "写真をアップロードしました"}
+      redirect_to ("/events/#{@photo.event_id}"), flash: {success: "写真をアップロードしました"}
     else
       render "events/show"
     end

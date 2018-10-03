@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post "/logout" => "sessions#destroy"
   resources :hosts
   resources :events, only:[:new, :create, :index, :show, :destroy]
-  resources :photos, only:[:create, :destroy]
+  resources :photos, only:[:create, :show, :destroy]
   #resourcesでは、次の7つがつくられる。
   #new, create, show, edit, update, index, destroy
   #使わないものがある場合、onlyで使うもの or exceptで使わないものを指定する

@@ -1,5 +1,3 @@
-<li>写真一覧</li>
-
 <li>写真を投稿する</li>
 <div class="uploading-photos">
   <%= form_for(@photo) do |f| %>
@@ -11,3 +9,9 @@
     <%= f.submit "Post", class: "btn btn-primary" %>
   <% end %>
 </div>
+
+<li>写真一覧</li>
+<% @photos.each do |photo| %>
+ <%= image_tag(photo) %>
+
+<% end %>
