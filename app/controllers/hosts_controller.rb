@@ -8,7 +8,7 @@ class HostsController < ApplicationController
     @host = Host.new(host_params)
     if @host.save
       log_in @host
-      redirect_to host_path(@host), flash: { success: "アカウントを作成しました" }
+      redirect_to events_path(@host), flash: { success: "アカウントを作成しました" }
     else
       render :new
       #コントローラーの中はコロンつけてアクション名でいける！

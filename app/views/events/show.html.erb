@@ -12,6 +12,6 @@
 
 <li>写真一覧</li>
 <% @photos.each do |photo| %>
- <%= image_tag(photo) %>
+ <%= image_tag(photo.image.url) %>
 
 <% end %>

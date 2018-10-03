@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   include EventsHelper
   
   before_action :set_current_host
-  before_action :set_current_event
+  #before_action :set_current_event
   
   def set_current_host
     @current_host = Host.find_by(id: session[:host_id])
