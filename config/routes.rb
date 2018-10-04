@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "/login" => "sessions#new"
   post "/login" => "sessions#create"
   post "/logout" => "sessions#destroy"
+  get "/guest" => "events#guest_login_view"
   resources :hosts
   resources :events, only:[:new, :create, :index, :show, :destroy]
   resources :photos, only:[:create, :show, :destroy]

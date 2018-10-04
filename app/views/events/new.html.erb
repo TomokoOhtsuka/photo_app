@@ -5,10 +5,13 @@
  　  
       <%= f.label :title, "イベント名" %>
       <%= f.text_field :title, class: "form-control" %>
+      
+      <%= f.label :guest_password, "ゲスト通知用パスワード" %>
+      <%= f.password_field :guest_password, class: "form-control" %>
    
       <%= f.label :description, "メモ" %>
       <%= f.text_area :description, class: "form-control" %>
-   
+
       <%= f.submit "イベント作成", class: "btn btn-primary" %>
     </div>    
   <% end %>

@@ -1,3 +1,5 @@
+<li>URLをゲストに教える</li>
+
 <li>写真を投稿する</li>
 <div class="uploading-photos">
   <%= form_for(@photo) do |f| %>
@@ -13,5 +15,5 @@
 <li>写真一覧</li>
 <% @photos.each do |photo| %>
  <%= image_tag(photo.image.url) %>
-　<!--".url"は、carrerWabeが自動的に、photo.imageで持ってきたオブジェクトをURLにするもの-->
+　<!--".url"は、carrierwaveが自動的に、photo.imageで持ってきたオブジェクトをURLにするもの-->
 <% end %>

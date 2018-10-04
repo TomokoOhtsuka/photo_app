@@ -13,8 +13,8 @@ class PhotosController < ApplicationController
     else
       @photos = current_event.photos
       render "events/show"
-      #renderはcontrollerを経由しないので、ここで@photos(=viewで使っている変数)を定義してあげないと
-      #値がnilだよって怒られる。
+      #renderはcontrollerを経由しないので、ここでviewで使っている変数(=ここの場合は@photos)を
+      #改めて定義してあげないと、値がnilだよって怒られる。
     end
   end
   

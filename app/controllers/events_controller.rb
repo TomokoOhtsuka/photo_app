@@ -34,16 +34,25 @@ class EventsController < ApplicationController
   end
   
   def guest_login_view # (GET)
-    # ログイン画面をだす
+    # ログイン画面をだす(newアクション的な役割)
+    event = current_event
+    binding.pry
+    @guest = event.guest_password
   end
   
-  def guest_login # (POST)
+  def guest_login # (POST:create的な役割)
+  #session[:guest_passeword] = current_event.guest_password ???
     # if 合言葉が同じ
     #    sessionに合言葉を入れる
     #    redirect_to show
     # else
     #    render :guest_login_view
     # end
+    if session[:guest_passeword] == current_event.guest_password
+        redirect_to events_path(@event), flash: { success: "イベントにログインしました" }
+    else
+        render :guests
+    end
   end
   
   def destroy
@@ -52,7 +61,7 @@ class EventsController < ApplicationController
   private
   #メソッドはprivateの中に書く必要がある
     def event_params
-      params.require(:event).permit(:title, :description)
+      params.require(:event).permit(:title, :guest_password, :description)
                      #↑このeventはform_forからきている
     end
     

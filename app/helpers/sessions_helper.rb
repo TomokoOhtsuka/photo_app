@@ -1,7 +1,7 @@
 module SessionsHelper
   
  def log_in(host)
-  #ログインする(誰を？)
+  #ログインする(誰を？を引数で入れてあげる)
   session[:host_id] = host.id
  end
  
