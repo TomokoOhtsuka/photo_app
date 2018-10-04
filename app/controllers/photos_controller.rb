@@ -6,10 +6,15 @@ class PhotosController < ApplicationController
     #@photo = current_event.photos.build(photo_params)
     # ↑photo_paramsで:event_id渡しているので、buildでなくてnewするだけでphotoがevent_idに紐づく。
     if @photo.save
-      redirect_to ("/events/#{@photo.event_id}"), flash: {success: "写真をアップロードしました"}
-      #redirect_to events_pathにホントはしたいけど、そうするとphoto#showに連れていかれてしまう…
+      redirect_to event_path(current_event), flash: {success: "写真をアップロードしました"}
+      #redirect_to event_pathだけではダメ。(どこのevent？ってなっちゃう)
+      #引数をcurrent_eventと与えることで、event_idが入る。
+      #redirect_to ("/events/#{@photo.event_id}"), flash: {success: "写真をアップロードしました"}
     else
+      @photos = current_event.photos
       render "events/show"
+      #renderはcontrollerを経由しないので、ここで@photos(=viewで使っている変数)を定義してあげないと
+      #値がnilだよって怒られる。
     end
   end
   
@@ -21,6 +26,7 @@ class PhotosController < ApplicationController
       params.require(:photo).permit(:image, :event_id)
       #events/show(投稿フォーム)でhidden_fieldでフォームでevent_idを受け取るようにしているから、
       #strong parameterでevent_idをpermitしてあげる
+      #→ヘルパーのcurrent_eventでハッシュで呼び出されるようにする
     end
 
 end

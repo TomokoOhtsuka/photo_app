@@ -13,5 +13,5 @@
 <li>写真一覧</li>
 <% @photos.each do |photo| %>
  <%= image_tag(photo.image.url) %>
-
+　<!--".url"は、carrerWabeが自動的に、photo.imageで持ってきたオブジェクトをURLにするもの-->
 <% end %>
