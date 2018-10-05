@@ -6,7 +6,7 @@
     <%= form_tag(url: "/events/#{@event_id}/login", method: :post) do %>
 
       <%= label_tag :guest_password, "ゲストパスワード" %>
-      <%= password_field :guest_password, class: "form-control" %>
+       <%= password_field :event, :guest_password, class: "form-control" %>
       
       <%= submit_tag "アカウント作成", class: "btn btn-primary" %>
     <% end %>

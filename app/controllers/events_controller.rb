@@ -41,11 +41,12 @@ class EventsController < ApplicationController
   def guest_login # (POST:create的な役割)
     # if 合言葉が同じ
     binding.pry
-    if params[:guest_password] == current_event.guest_password
+    if params[:event][:guest_password].to_i == current_event.guest_password
     #    sessionに合言葉を入れる
       session[:guest_passeword] = params[:guest_password]
-      redirect_to show, flash: { success: "イベントにログインしました" }
+      redirect_to event_path(current_event), flash: { success: "イベントにログインしました" }
     else
+      flash.now[:danger] = "ゲストパスワードを入力してください"
       render :guest_login_view
     end
   end
