@@ -35,26 +35,21 @@ class EventsController < ApplicationController
   
   def guest_login_view # (GET)
     # ログイン画面をだす(newアクション的な役割)
-    event = current_event
-    binding.pry
-    @guest = event.guest_password
+    @event_id = current_event.id
   end
   
   def guest_login # (POST:create的な役割)
-  #session[:guest_passeword] = current_event.guest_password ???
     # if 合言葉が同じ
+    binding.pry
+    if params[:guest_password] == current_event.guest_password
     #    sessionに合言葉を入れる
-    #    redirect_to show
-    # else
-    #    render :guest_login_view
-    # end
-    if session[:guest_passeword] == current_event.guest_password
-        redirect_to events_path(@event), flash: { success: "イベントにログインしました" }
+      session[:guest_passeword] = params[:guest_password]
+      redirect_to show, flash: { success: "イベントにログインしました" }
     else
-        render :guests
+      render :guest_login_view
     end
   end
-  
+
   def destroy
   end
   
