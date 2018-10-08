@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2018_10_04_072929) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "guest_password"
+    t.string "guest_password"
   end
 
   create_table "hosts", force: :cascade do |t|

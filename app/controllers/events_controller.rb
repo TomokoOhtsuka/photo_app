@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-  before_action :logged_in_host, only: [:new, :create, :index, :show, :destroy]
+  before_action :login_as_host_or_guest, only: [:show]
+  before_action :logged_in_host,  only: [:new, :create, :index, :destroy]
   
   def new
    @event = current_host.events.build if logged_in?
@@ -24,13 +25,13 @@ class EventsController < ApplicationController
   end
   
   def show
-    if logged_in?
+#    if logged_in? || guest_logged_in?
       #@photo = current_event.photos.build
       @photo = Photo.new
       @photos = current_event.photos
-    else
-      render :login_view
-    end
+#    else
+#      render :login_view
+#    end
   end
   
   def guest_login_view # (GET)
@@ -40,10 +41,9 @@ class EventsController < ApplicationController
   
   def guest_login # (POST:create的な役割)
     # if 合言葉が同じ
-    binding.pry
-    if params[:event][:guest_password].to_i == current_event.guest_password
+    if params[:event][:guest_password] == current_event.guest_password
     #    sessionに合言葉を入れる
-      session[:guest_passeword] = params[:guest_password]
+      session[:guest_password] = params[:guest_password]
       redirect_to event_path(current_event), flash: { success: "イベントにログインしました" }
     else
       flash.now[:danger] = "ゲストパスワードを入力してください"
@@ -59,10 +59,5 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:title, :guest_password, :description)
                      #↑このeventはform_forからきている
-    end
-    
-    def guest_log_in?
-      # sessionが入っているか(セッションの中身は合言葉でOK)
-      # sessionsヘルパー
     end
 end

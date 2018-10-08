@@ -1,7 +1,10 @@
 <div id="header">
   <span style="font-family: 'Comic Sans MS Bold';"><b><p>Something Blue</p></b></span>
   <div id="header-link">
-    <% if logged_in? %>
+    <% if guest_logged_in? %>
+      <li><%= link_to("concept", "/about")%></li>
+      <li><%= link_to("signup", "/signup")%></li>
+    <% elsif logged_in? %>
       <li><%= link_to(@current_host.name, events_path)%></li>
       <li><%= link_to("concept", "/about")%></li>
       <li><%= link_to("logout", "/logout", {method: "post"} )%></li>

@@ -1,7 +1,12 @@
 class PhotosController < ApplicationController
-  before_action :logged_in_host, only:[:create, :destroy]
+  before_action :login_as_host_or_guest, only: [:create]
+  before_action :logged_in_host, only:[:destroy]
   
   def create
+    #if !logged_in?
+     # logged_in_guest
+    #end
+    
     @photo = Photo.new(photo_params)
     #@photo = current_event.photos.build(photo_params)
     # ↑photo_paramsで:event_id渡しているので、buildでなくてnewするだけでphotoがevent_idに紐づく。
