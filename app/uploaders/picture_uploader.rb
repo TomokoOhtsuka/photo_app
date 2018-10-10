@@ -5,7 +5,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   
   # 画像のサイズを変更
-  process resize_to_limit: [1280, 720]
+  process :resize_to_limit => [1280, 720]
  
   # サムネイルの生成
   version :thumb do
