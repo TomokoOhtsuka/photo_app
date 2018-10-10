@@ -180,21 +180,22 @@ input {
   }
 }
 
-/* events/show サムネイル 1列8枚バージョン*/
+/* events/show画面サムネイル(1列8枚)*/
 .thumbnail{
   margin: 0;
   width: 12.5%;
   height: 160px;
   float: left;
   
-  img{
+  a img{
     margin: 0;
     width: 158.5px;
     height: 150px;
     object-fit: cover;
+    /*この1行を追加するといい感じにトリミング表示してくれる*/
   }
 }
-/*　サムネイル1列6枚バージョン
+/*　サムネイル(1列6枚)
 .thumbnail{
   margin: 0;
   width: 16.66%;

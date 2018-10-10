@@ -23,6 +23,10 @@ class PhotosController < ApplicationController
     end
   end
   
+  def show
+    @photo = Photo.find_by(id: params[:id])
+  end
+  
   def destroy
     @photo = params[:photo.id]
     @photo.delete
