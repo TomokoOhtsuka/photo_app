@@ -11,7 +11,7 @@ module EventsHelper
   end
   
   def guest_logged_in?
-      session[:guest_password] != nil?
+      session[:guest_password].present?
       # sessionが入っているか(セッションの中身は合言葉でOK)
       # sessionsヘルパー
     #end

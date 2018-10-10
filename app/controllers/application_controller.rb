@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
         unless guest_logged_in?
           store_location
           flash[:danger] = "ゲストログインしてください"
-      　  redirect_to login_event_path
+          redirect_to event_login_path
         end
       end
 
@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
     end
     
     def login_as_host_or_guest
-      if !logged_in?
+      unless logged_in?
         logged_in_guest
       end
     end  

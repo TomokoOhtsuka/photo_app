@@ -24,6 +24,9 @@ class PhotosController < ApplicationController
   end
   
   def destroy
+    @photo = params[:photo.id]
+    @photo.delete
+    redirect_to event_path(current_event), flash: {success: "写真を削除しました"}
   end
   
   private

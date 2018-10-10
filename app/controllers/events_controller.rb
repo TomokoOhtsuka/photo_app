@@ -43,7 +43,7 @@ class EventsController < ApplicationController
     # if 合言葉が同じ
     if params[:event][:guest_password] == current_event.guest_password
     #    sessionに合言葉を入れる
-      session[:guest_password] = params[:guest_password]
+      session[:guest_password] = params[:event][:guest_password]
       redirect_to event_path(current_event), flash: { success: "イベントにログインしました" }
     else
       flash.now[:danger] = "ゲストパスワードを入力してください"

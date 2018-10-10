@@ -12,6 +12,8 @@
 
 <li>写真一覧</li>
 <% @photos.each do |photo| %>
- <%= image_tag(photo.image.url) %>
+  <div class="thumbnail">
+  <%= image_tag(photo.image.thumb.url) %>
 　<!--".url"は、carrierwaveが自動的に、photo.imageで持ってきたオブジェクトをURLにするもの-->
+　</div>
 <% end %>
