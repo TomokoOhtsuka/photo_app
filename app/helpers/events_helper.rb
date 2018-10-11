@@ -10,6 +10,11 @@ module EventsHelper
     @current_event ||= Event.find_by(id: @event_id)
   end
   
+  def redirect_guestpage
+    binding.pry
+    redirect_to event_path(current_event)
+  end
+  
   def guest_logged_in?
       session[:guest_password].present?
       # sessionが入っているか(セッションの中身は合言葉でOK)

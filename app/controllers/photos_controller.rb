@@ -28,9 +28,10 @@ class PhotosController < ApplicationController
   end
   
   def destroy
-    @photo = params[:photo.id]
+    @photo = Photo.find_by(id: params[:id])
+    event_page = @photo.event_id
     @photo.delete
-    redirect_to event_path(current_event), flash: {success: "写真を削除しました"}
+    redirect_to event_path(event_page)
   end
   
   private
@@ -40,5 +41,4 @@ class PhotosController < ApplicationController
       #strong parameterでevent_idをpermitしてあげる
       #→ヘルパーのcurrent_eventでハッシュで呼び出されるようにする
     end
-
 end
