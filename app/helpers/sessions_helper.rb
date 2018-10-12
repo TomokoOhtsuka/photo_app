@@ -14,7 +14,6 @@ module SessionsHelper
  
  def logged_in?
   !current_host.nil?
-  
  end
  
  def log_out

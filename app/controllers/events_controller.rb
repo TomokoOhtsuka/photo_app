@@ -50,8 +50,12 @@ class EventsController < ApplicationController
       render :guest_login_view
     end
   end
-
+  
   def destroy
+    @event = Event.find_by(id: params[:id])
+    @event.delete
+    redirect_to events_path
+    flash.now[:success] = "イベントを削除しました"
   end
   
   private

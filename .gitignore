@@ -26,5 +26,8 @@
 /public/assets
 .byebug_history
 
+#ローカルの画像ファイルをGitの対象から外します。
+/public/uploads
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key

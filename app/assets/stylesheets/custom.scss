@@ -93,7 +93,7 @@ li{
     }
   }
   
-  .balloon{
+  .background-photo{
   width:100%;
   height:auto;
   
@@ -179,39 +179,39 @@ input {
     color: $state-danger-text;
   }
 }
+/* events/show画面*/
+/* 写真アップロード*/
+#new_photo{
+  margin: 5px;
+  li{
+    text-align: center;
+  }
+  #photo_image{
+    margin: 3px;
+    
+  }
+}
 
-/* events/show画面サムネイル(1列8枚)*/
+/*サムネイル(1列8枚)*/
 .thumbnail{
   margin: 0;
-  width: 12.5%;
+  width: 168.6px;
   height: 160px;
   float: left;
   
   a img{
     margin: 0;
-    width: 100%;
+    width: 158.5px;
     height: 150px;
     object-fit: cover;
     /*この1行を追加するといい感じにトリミング表示してくれる*/
   }
 }
 
-/*　サムネイル(1列6枚)
-.thumbnail{
-  margin: 0;
-  width: 16.66%;
-  height: 260px;
-  float: left;
-  
-  img{
-    margin: 0;
-    width: 250px;
-    height: 260px;
-    object-fit: cover;
-  }
-}
-*/
-
 .bigphoto{
   text-align: center;
+  img{
+    width: 80%;
+    height: auto;
+  }
 }
