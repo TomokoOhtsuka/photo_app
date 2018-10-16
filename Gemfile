@@ -64,7 +64,8 @@ end
 
 group :production do
   gem 'pg'
-  gem 'fog'
+  #herokuにデプロイする時に、fog-awsと変更しておく
+  gem 'fog-aws'
   # Use Puma as the app server
   gem 'puma', '~> 3.11'
 
