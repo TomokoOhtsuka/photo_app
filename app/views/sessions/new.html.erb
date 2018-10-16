@@ -1,6 +1,6 @@
 <% provide(:title, "Log in") %>
 <h1>Log in</h1>
-<img class="background-photo" src="/assets/images/basketflower.jpg">
+<%= image_tag("basketflower.jpg", class: "background-photo") %>
 <div class="row">
   <div class="col-md-4 col-md-offset-4">
     <%= form_for(:session, url: login_path) do |f| %>
