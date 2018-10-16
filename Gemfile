@@ -8,8 +8,6 @@ gem 'rails', '~> 5.2.0'
 gem 'bootstrap-sass'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
-# Use Puma as the app server
-gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -67,6 +65,9 @@ end
 group :production do
   gem 'pg'
   gem 'fog'
+  # Use Puma as the app server
+  gem 'puma', '~> 3.11'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

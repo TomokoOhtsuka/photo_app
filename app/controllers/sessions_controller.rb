@@ -8,6 +8,8 @@ class SessionsController < ApplicationController
     # http://secret-garden.hatenablog.com/entry/2016/09/02/000000
 
     if @host && @host.authenticate(params[:session][:password])
+      #models/hosts.rbでhas_secure_passwordを設定したので、authenticateメソッドが使えるようになる。
+      #PWは簡単に参照できないようになっているが、authenticate(照合したいPW)とすればTorFが返ってくるしくみ
       log_in @host
       redirect_to events_path(@event), flash: { success: "ログインしました" }
       #redirect_toの場合はflashは第二引数にハッシュで渡してあげる

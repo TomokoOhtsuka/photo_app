@@ -1,19 +1,29 @@
 <div id="header">
-  <span style="font-family: 'Comic Sans MS Bold';"><b><p>Something Blue</p></b></span>
-  <div id="header-link">
     <% if logged_in? %>
-      <li><%= link_to(@current_host.name, events_path)%></li>
-      <li><%= link_to("concept", "/about")%></li>
-      <li><%= link_to("logout", "/logout", {method: "post"} )%></li>
+      <span style="font-family: 'Comic Sans MS Bold';">
+        <b><p><%= link_to("Something Blue", events_path, class:"header-logo") %></p></b>
+      </span>
+      <div id="header-link">
+        <li><%= link_to(@current_host.name, events_path) %></li>
+        <li><%= link_to("concept", "/about")%></li>
+        <li><%= link_to("logout", "/logout", {method: "post"} )%></li>
+      </div>
     <% elsif guest_logged_in? %>
-      <li><%# link_to("home", "#")%></li>
-      <li><%= link_to("concept", "/about")%></li>
-      <li><%= link_to("signup", "/signup")%></li>
+      <span style="font-family: 'Comic Sans MS Bold';" class="header-logo"><b><p>Something Blue</p></b></span>
+      <div id="header-link">
+        <li><%# link_to("home", "#")%></li>
+        <li><%= link_to("concept", "/about")%></li>
+        <li><%= link_to("signup", "/signup")%></li>
+      </div>
     <% else %>
-      <li><%= link_to("home", "/")%></li>
-      <li><%= link_to("concept", "/about")%></li>
-      <li><%= link_to("login", "/login")%></li>
-      <li><%= link_to("signup", "/signup")%></li>
+      <span style="font-family: 'Comic Sans MS Bold';">
+        <b><p><%= link_to("Something Blue", root_url, class:"header-logo") %></p></b>
+      </span>
+      <div id="header-link">
+        <li><%= link_to("home", "/")%></li>
+        <li><%= link_to("concept", "/about")%></li>
+        <li><%= link_to("login", "/login")%></li>
+        <li><%= link_to("signup", "/signup")%></li>
+      </div>
     <% end %>
   </div>
-</div>
