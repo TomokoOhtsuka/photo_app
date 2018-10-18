@@ -9,7 +9,9 @@
         <li><%= link_to("logout", "/logout", {method: "post"} )%></li>
       </div>
     <% elsif guest_logged_in? %>
-      <span style="font-family: 'Comic Sans MS Bold';" class="header-logo"><b><p>Something Blue</p></b></span>
+       <span style="font-family: 'Comic Sans MS Bold';">
+        <b><p><%= link_to("Something Blue", root_url, class:"header-logo") %></p></b>
+      </span>
       <div id="header-link">
         <li><%# link_to("home", "#")%></li>
         <li><%= link_to("concept", "/about")%></li>

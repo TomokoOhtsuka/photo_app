@@ -17,6 +17,11 @@ body{
   margin: 0 0 0 0;
 }
 
+.container{
+  width: 100%;
+  padding: 0;
+}
+
 li{
   list-style:none;
 }
@@ -36,12 +41,11 @@ li{
   }
 }
 
-.header-logo{
+a.header-logo{
   list-style: none;
   color: white;
-  a{
   text-decoration: none;
-  }
+  
 }
 
 #header-link{
@@ -54,88 +58,76 @@ li{
   }
 }
 
-/* top */
-.container{
-  width: 100%;
-  height: auto;
-  padding: 0;
-  position: relative;
-  
-  .alert{
-    margin: 0;
-  }
-  
-  form{
-    margin: 50px 0 10px 0;
-  }
+/* top 修正後*/
+.top-page{
+  background-image: url(balloon.jpeg);
+  background-size: cover;
+  color: white;
   
   h1{
+    margin: 0;
+    padding-top: 250px;
+    text-align: center;
+    font-size: 50px;
+  }
+  
+  a {
+    display: inline-block;
+    font-size: 20px;
+    text-align: center;
     color: white;
-    text-align: center;
-    position: absolute;
-    top: 30%;
-    left: 47%;
-    -ms-transform: translate(-40%,-40%);
-    -webkit-transform: translate(-40%,-40%);
-    transform: translate(-40%,-40%);
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 10px;
+    text-decoration: none;
   }
   
-  .invitation{
-    font-size: 2em;
-    float: right;
+  .url{
     text-align: center;
-    position: absolute;
-    top: 45%;
-    left: 43%;
-    -ms-transform: translate(-40%,-40%);
-    -webkit-transform: translate(-40%,-40%);
-    transform: translate(-40%,-40%);
+    text-decoration: none;
+    padding: 50px 0 250px 0;
+
+  }
+  
+  .signup{
+    margin-right: 20px;
+  }
+  
+  .login{
     
-    span{
-      margin: 10px 10px;
-      color: white;
-      
-      a{
-        color: white;
-      }
-    }
-  }
-  
-  .background-photo{
-  width:100%;
-  height:auto;
-  
   }
 }
 
-/* sidebar */
 
-aside {
-  section.user_info {
-    margin-top: 20px;
+/* conceptページ 修正済み*/
+.concept{
+  background-image: url(blueshell.jpeg);
+  background-size: cover;
+  color: white;
+  text-align: center;
+  line-height: 45px;
+  font-size: 25px;
+  
+  .title-msg{
+    font-size: 30px;
+    padding: 25px 0 0 0;
   }
-  section {
-    padding: 10px 0;
-    margin-top: 20px;
-    &:first-child {
-      border: 0;
-      padding-top: 0;
-    }
-    span {
-      display: block;
-      margin-bottom: 3px;
-      line-height: 1;
-    }
-    h1 {
-      font-size: 1.4em;
-      text-align: left;
-      letter-spacing: -1px;
-      margin-bottom: 3px;
-      margin-top: 0px;
-    }
+
+  .top-msg{
+  }
+
+  .middle-msg{
+    margin: 15px 0;
+  }
+  
+  .bottom-msg{
+    
+  }
+  
+  .end-msg{
+    padding: 15px 0 25px;
   }
 }
-
 /* ※後から設定する(チュートリアル　リスト7.11）
 .gravatar {
   float: left;
@@ -187,6 +179,25 @@ input {
     color: $state-danger-text;
   }
 }
+
+/* login & signup */
+.login-and-signup-page{
+  background-image: url(basketflower.jpg);
+  background-size: cover;
+  
+  h2{
+    color: white;
+    margin: 0;
+    padding-top: 50px;
+    text-align: center;
+  }
+
+  p{
+    padding: 10px 0 30px;
+  }
+  
+}
+
 /* events/show画面*/
 /* 写真アップロード*/
 #new_photo{
