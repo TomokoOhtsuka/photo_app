@@ -27,17 +27,20 @@ li{
 }
 
 #header{
-  height: 50px;
+  height: 60px;
+  width: 100%;
   color:$gray;
   background: -webkit-linear-gradient(left, #819FF7, 	#A9F5D0);
   background: -moz-linear-gradient(left, #819FF7,	#A9F5D0);
   background: linear-gradient(to right,#819FF7, #A9F5D0);
+  position: fixed;
+  z-index: 100;
   
   p{
     display: inline-block;
     width: 300px;
     font-size: 25px;
-    padding: 13px;
+    padding: 18px 20px;
   }
 }
 
@@ -54,7 +57,7 @@ a.header-logo{
   li{
     float: left;
     margin-right:10px;
-    padding: 15px 5px 2px 5px;
+    padding: 18px 5px 2px 5px;
   }
 }
 
@@ -180,6 +183,11 @@ input {
   }
 }
 
+/* flashメッセージ */
+.alert{
+  margin: 0px;
+}
+
 /* login & signup */
 .login-and-signup-page{
   background-image: url(basketflower.jpg);
@@ -188,7 +196,7 @@ input {
   h2{
     color: white;
     margin: 0;
-    padding-top: 50px;
+    padding-top: 120px;
     text-align: center;
   }
 
