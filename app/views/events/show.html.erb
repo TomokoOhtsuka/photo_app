@@ -1,34 +1,34 @@
-<div class="row">
-  <div class="col-md-4 col-md-offset-4">
+<div class="events-show">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
   
-    <li>写真を投稿する</li>
-  
-    <%= form_for(@photo) do |f| %>
-      <%= render("shared/error.messages", object: f.object) %>
-      <span class="picture">
-      　<%= f.hidden_field :event_id, :value => current_event.id %>
-      　<%= f.file_field :image %>
-    　</span>
-    　<%= f.submit "Post", class: "btn btn-primary" %>
-    <% end %>
+      <%= form_for(@photo) do |f| %>
+        <%= render("shared/error.messages", object: f.object) %>
+        <span class="picture">
+        　<%= f.hidden_field :event_id, :value => current_event.id %>
+      　  <%= f.file_field :image %>
+    　  </span>
+    　  <%= f.submit "写真を投稿する", class: "btn btn-primary" %>
+      <% end %>
+    </div>
   </div>
-</div>
+  
+  <!--写真一覧-->
+  <% @photos.each do |photo| %>
+    <div class="thumbnail">
+        <%= link_to image_tag(photo.image.thumb.url), photo %>
+　      <!--".url"は、carrierwaveが自動的に、photo(モデル名).image(カラム名)で持ってきたオブジェクトをURLにするもの-->
+　   </div>
+  <% end %>
 
-<li>写真一覧</li>
-<% @photos.each do |photo| %>
-  <div class="thumbnail">
-    <%= link_to image_tag(photo.image.thumb.url), photo %>
-　    <!--".url"は、carrierwaveが自動的に、photo(モデル名).image(カラム名)で持ってきたオブジェクトをURLにするもの-->
-　 </div>
-<% end %>
-
-<div class="row">
-  <div class="col-md-2 col-md-offset-10 delete" >
-    <% if logged_in? %>
-      <li><%= link_to("このイベントを削除する", event_path, method: :delete, 
+  <div class="row">
+    <div class="col-md-2 col-md-offset-10 delete" >
+      <% if logged_in? %>
+        <li><%= link_to("このイベントを削除する", event_path, method: :delete, 
                                                     #{method: "delete"}だとconfirmつけたらエラーになった
                   data: { confirm: '削除すると元には戻せません。本当に削除しますか?' })%>
 
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

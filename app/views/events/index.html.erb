@@ -1,7 +1,16 @@
-<li><%= link_to("フォトアルバムを作成する", new_event_path) %></li>
-<li><%= @current_host.name %>さんのフォトアルバム一覧</li>
+<div class="events-index">
+  <div class="button">
+    <%= link_to("フォトアルバムを作成する", new_event_path) %>
+  </div>
+  <p><%# @current_host.name %>My memories</p>
 
-<% @events.each do |event| %>
-  <li><%= link_to(event.title, event_path(event)) %></li>
-                                        <!--↑この引数の部分で、イベントのidを取ってきている-->
-<% end %>
+  <% @events.each do |event| %>
+    <div class="albums-index">
+      <%= link_to(event_path(event)) do %>
+                            <!--↑この引数の部分で、イベントのidを取ってきている-->
+        <%= event.title %><br>
+        <%= event.description if event.description.present? %>
+      <% end %>
+    </div>                                      
+  <% end %>
+</div>
