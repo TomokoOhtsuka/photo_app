@@ -63,7 +63,7 @@ a.header-logo{
 
 /* top 修正後*/
 .top-page{
-  background-image: url(beach.jpeg);
+  background-image: image-url("beach.jpeg");
   background-size: cover;
   color: white;
   height: 550px;
@@ -107,7 +107,7 @@ a.header-logo{
 /* conceptページ 修正済み*/
 .concept{
   padding-top: 80px;
-  background-image: url(blueshell.jpeg);
+  background-image: image-url("blueshell.jpeg");
   background-size: cover;
   color: white;
   text-align: center;
@@ -195,7 +195,7 @@ input {
 
 /* login & signup */
 .login-and-signup-page{
-  background-image: url(basketflower.jpg);
+  background-image: image-url("basketflower.jpg");
   background-size: cover;
   width: 100%;
   height: 550px;
@@ -216,7 +216,7 @@ input {
 
 /* events/index画面*/
 .events-index{
-  background-image: url(balloon3.jpg);
+  background-image: image-url("balloon3.jpg");
   background-size: cover;
   text-align: center;
   width: 100%;
@@ -265,14 +265,8 @@ input {
   padding-top: 120px;
   width: 100%;
   height: 1000px;
-  background-image: url(balloon4.jpg);
+  background-image: image-url("balloon4.jpg");
   background-size: cover;
-  
-  li{
-    text-align: center;
-    color: white;
-    font-style: bold;
-  }
   
   .btn{
     margin-bottom: 20px;
@@ -299,7 +293,7 @@ input {
   
 /* events/new画面*/
 .event-new{
-  background-image: url(balloon3.jpg);
+  background-image: image-url("balloon3.jpg");
   background-size: cover;
   width: 100%;
   height: 550px;
@@ -318,7 +312,7 @@ input {
 
 /* events/guest_login_view画面*/
  .event-login{
-  background-image: url(balloon3.jpg);
+  background-image: image-url("balloon3.jpg");
   background-size: cover;
   width: 100%;
   height: 550px;
