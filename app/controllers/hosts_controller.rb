@@ -1,4 +1,5 @@
 class HostsController < ApplicationController
+  before_action :forbid_logged_in_host
   
   def new
     @host = Host.new

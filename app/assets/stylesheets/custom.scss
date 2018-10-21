@@ -2,11 +2,17 @@
 @import "bootstrap";
 
 $gray:#F2F2F2;
+$darkgreen: #556b2f;
+$seagreen: #2e8b57;
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
+}
+
+*{
+  font-family: Comic Sans MS;
 }
 
 body{
@@ -39,7 +45,7 @@ li{
   p{
     display: inline-block;
     width: 300px;
-    font-size: 25px;
+    font-size: 30px;
     padding: 18px 20px;
   }
 }
@@ -66,7 +72,7 @@ a.header-logo{
   background-image: image-url("beach.jpeg");
   background-size: cover;
   color: white;
-  height: 550px;
+  height: 1000px;
   
   h1{
     margin: 0;
@@ -109,12 +115,12 @@ a.header-logo{
   padding-top: 80px;
   background-image: image-url("blueshell.jpeg");
   background-size: cover;
-  color: white;
+  color: $darkgreen;
   text-align: center;
   line-height: 45px;
   font-size: 25px;
   width: 100%;
-  height: 700px;
+  height: 1000px;
 
   .title-msg{
     font-size: 30px;
@@ -136,16 +142,6 @@ a.header-logo{
     padding: 15px 0 25px;
   }
 }
-/* ※後から設定する(チュートリアル　リスト7.11）
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
-
-.gravatar_edit {
-  margin-top: 15px;
-}
-*/
 
 /* forms */
 
@@ -199,11 +195,11 @@ input {
   background-image: image-url("basketflower.jpg");
   background-size: cover;
   width: 100%;
-  height: 550px;
+  height: 1000px;
 
   
   h2{
-    color: white;
+    color: $seagreen;
     margin: 0;
     padding-top: 120px;
     text-align: center;
@@ -297,7 +293,7 @@ input {
   background-image: image-url("balloon3.jpg");
   background-size: cover;
   width: 100%;
-  height: 550px;
+  height: 1000px;
 
   .row{
     padding-top: 130px;
@@ -316,7 +312,7 @@ input {
   background-image: image-url("balloon3.jpg");
   background-size: cover;
   width: 100%;
-  height: 550px;
+  height: 1000px;
   .row{
     padding-top:150px;
   }

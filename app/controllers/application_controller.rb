@@ -32,4 +32,11 @@ class ApplicationController < ActionController::Base
         logged_in_guest
       end
     end  
+    
+    def forbid_logged_in_host
+      if logged_in?
+        flash[:danger] = "すでにログインしています"
+        redirect_to events_path
+      end
+    end
 end

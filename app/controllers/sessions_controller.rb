@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :forbid_logged_in_host
+  
   def new
   end
   

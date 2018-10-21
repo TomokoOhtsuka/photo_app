@@ -4,11 +4,10 @@
   
       <%= form_for(@photo) do |f| %>
         <%= render("shared/error.messages", object: f.object) %>
-        <span class="picture">
-        　<%= f.hidden_field :event_id, :value => current_event.id %>
-      　  <%= f.file_field :image %>
-    　  </span>
-    　  <%= f.submit "写真を投稿する", class: "btn btn-primary" %>
+        
+        <%= f.hidden_field :event_id, :value => current_event.id %>
+      　<%= f.file_field :image %>
+      　<%= f.submit "写真を投稿する", class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>
@@ -21,14 +20,16 @@
 　   </div>
   <% end %>
 
-  <div class="row">
-    <div class="col-md-2 col-md-offset-10 delete" >
-      <% if logged_in? %>
-        <li><%= link_to("このイベントを削除する", event_path, method: :delete, 
+  <% if logged_in? %>
+    <div class="delete">
+      <%= link_to("このイベントを削除する", event_path(current_event), method: :delete, 
+                                                    #current_event必要！！
                                                     #{method: "delete"}だとconfirmつけたらエラーになった
-                  data: { confirm: '削除すると元には戻せません。本当に削除しますか?' })%>
-
-      <% end %>
+          data: { confirm: '削除すると元には戻せません。本当に削除しますか?' })%>
+      <!--ここはまだcurrent_eventは削除されていなくて、削除するアクションへのリンクをつけてあげているだけ。
+          どのアクションを消すのか教えてあげないと、destroyアクションには伝わらない。
+          destroyアクションでは　URLに含まれている :idの値を持つeventレコードを削除した後に、
+          redirect_to events_path(イベント一覧ページ)をしているので、特にcurrent_eventを使うところはない。 -->
     </div>
-  </div>
+  <% end %>
 </div>
