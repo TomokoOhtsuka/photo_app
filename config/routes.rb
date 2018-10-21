@@ -15,11 +15,13 @@ Rails.application.routes.draw do
   resources :photos, only:[:create, :show, :destroy]
   resources :events, only:[:new, :create, :index, :show, :destroy] do
     member do
-      get  "/login" => "events#guest_login_view"
-      post "/login" => "events#guest_login"
+      get    "/login"  => "events#guest_login_view"
+      post   "/login"  => "events#guest_login"
+      delete "/logout" => "events#guest_logout"
     end
   end
-  #onlyとmemberの併用はこんなかんじでOK
+  #onlyとmemberの併用はこんなかんじで、
+  #onlyがあればonlyで通常通り指定、その他に付け加えたいURLがあればmemberで追加する。
   
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

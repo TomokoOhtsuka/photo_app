@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :forbid_logged_in_host
+  before_action :forbid_logged_in_host, except:[:destroy]
   
   def new
   end

@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :login_as_host_or_guest, only: [:show]
   before_action :logged_in_host,  only: [:new, :create, :index, :destroy]
+  before_action :forbid_logged_in_guest, only:[:guest_login_view, :guest_login]
   
   def new
    @event = current_host.events.build if logged_in?
@@ -49,6 +50,11 @@ class EventsController < ApplicationController
       flash.now[:danger] = "ゲストパスワードを入力してください"
       render :guest_login_view
     end
+  end
+  
+  def guest_logout
+    session[:guest_password] = nil
+    redirect_to login_event_path, flash: { success: "ゲストログアウトしました" }
   end
   
   def destroy
