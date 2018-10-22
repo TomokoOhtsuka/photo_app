@@ -1,4 +1,5 @@
 <div class="event-new">
+  <div class="background">
   <%= form_for(@event) do |f| %>
   <div class="row">
     <h2>新しいフォトアルバムを作成する</h2>
@@ -14,8 +15,9 @@
       <%= f.label :description, "メモ" %>
       <%= f.text_area :description, class: "form-control" %>
 
-      <%= f.submit "イベント作成", class: "btn btn-primary" %>
+      <%= f.submit "フォトアルバム作成", class: "btn btn-primary" %>
     </div>    
   <% end %>
+  </div>
   </div>
 </div>

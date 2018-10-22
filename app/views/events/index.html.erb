@@ -1,16 +1,18 @@
-<div class="events-index">
-  <div class="button">
-    <%= link_to("フォトアルバムを作成する", new_event_path) %>
-  </div>
-  <p><%# @current_host.name %>My memories</p>
+<div class="events-index ">
+  <div class="background">
+    <div class="button">
+      <%= link_to("フォトアルバムを作成する", new_event_path) %>
+    </div>
+    <p><%# @current_host.name %>My memories</p>
 
-  <% @events.each do |event| %>
-    <div class="albums-index">
-      <%= link_to(event_path(event)) do %>
+    <% @events.each do |event| %>
+      <div class="albums-index">
+        <%= link_to(event_path(event)) do %>
                             <!--↑この引数の部分で、イベントのidを取ってきている-->
-        <%= event.title %><br>
-        <%= event.description if event.description.present? %>
-      <% end %>
-    </div>                                      
-  <% end %>
+          <%= event.title %><br>
+          <%= event.description if event.description.present? %>
+        <% end %>
+      </div>                                      
+    <% end %>
+  </div>
 </div>
