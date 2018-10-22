@@ -3,7 +3,7 @@
   <% if logged_in? %>
     <div class="share">
       <h1>フォトアルバムを共有する(以下の情報をゲストにお伝えください)</h1>
-        <p><%= request.url %><br>
+        <p><%= request.url %>/login<br>
            パスワード：<%= current_event.guest_password %></p>
         
       <h1>OR</h1>  
