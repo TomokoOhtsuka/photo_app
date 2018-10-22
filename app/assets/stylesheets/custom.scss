@@ -71,13 +71,16 @@ a.header-logo{
 .top-page{
   background-image: image-url("beach.jpeg");
   background-size: cover;
+  margin-right: auto;
+  margin-left: auto;
   color: white;
-  height: 1000px;
+  height: 100%;
+  width: 100%;
   
   h1{
     margin: 0;
-    padding-top: 100px;
-    padding-bottom: 150px;
+    padding-top: 110px;
+    padding-bottom: 170px;
     text-align: center;
     font-size: 45px;
   }

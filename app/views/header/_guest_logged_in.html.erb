@@ -1,0 +1,7 @@
+<b><p><%= link_to("Something Blue", root_url, class:"header-logo") %></p></b>
+<div id="header-link">
+  <li><%# link_to("home", "#")%></li>
+  <li><%= link_to("concept", "/about")%></li>
+  <li><%= link_to("signup", "/signup")%></li>
+  <li><%= link_to("logout", logout_event_path, method: :delete) %></li>
+</div>

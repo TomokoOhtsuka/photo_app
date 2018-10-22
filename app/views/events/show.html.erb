@@ -32,10 +32,3 @@
           redirect_to events_path(イベント一覧ページ)をしているので、特にcurrent_eventを使うところはない。 -->
     </div>
   <% end %>
-  
-  <% if guest_logged_in? && !logged_in? %>
-    <div class="delete">
-      <%= link_to("ゲストログアウトする", logout_event_path, method: :delete) %>
-    </div>
-  <% end %>
-</div>
