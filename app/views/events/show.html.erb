@@ -1,5 +1,4 @@
 <div class="events-show">
-  
   <% if logged_in? %>
     <div class="share">
       <h1>フォトアルバムを共有する(以下の情報をゲストにお伝えください)</h1>
@@ -17,6 +16,8 @@
           redirect_to events_path(イベント一覧ページ)をしているので、特にcurrent_eventを使うところはない。 -->
     </div>
   <% end %>
+  
+  <p><%= current_event.description if current_event.description.present? %></p>
   
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
