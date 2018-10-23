@@ -287,6 +287,12 @@ input {
     margin-top: 0px;
   }
   
+  h1{
+    font-size: 30px;
+    text-align: center;
+    color: white;
+  }
+  
   .row{
   border-radius: 10px;
   padding: 10px;
@@ -299,8 +305,9 @@ input {
   }
   p{
     text-align: center;
-    font-size: 20px;
+    font-size: 18px;
     color: white;
+    line-height: 25px;
   }
 }
 /* events/show URL・PW共有メッセ―ジ*/
@@ -312,7 +319,7 @@ input {
   margin : 0 auto 20px auto;
   text-align: center;
   
-  h1{
+  h2{
     font-size: 17px;
     color: #086A87;
   }

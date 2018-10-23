@@ -1,11 +1,13 @@
 <div class="events-show">
+  <h1><%= current_event.description if current_event.description.present? %></h1>
+  
   <% if logged_in? %>
     <div class="share">
-      <h1>フォトアルバムを共有する(以下の情報をゲストにお伝えください)</h1>
+      <h2>フォトアルバムを共有する(以下の情報をゲストにお伝えください)</h2>
         <p><%= request.url %>/login<br>
-           パスワード：<%= current_event.guest_password %></p>
+           ゲストパスワード：<%= current_event.guest_password %></p>
         
-      <h1>OR</h1>  
+      <h2>OR</h2>  
       <%= link_to("このフォトアルバムを削除する", event_path(current_event), method: :delete, 
                                                     #current_event必要！！
                                                     #{method: "delete"}だとconfirmつけたらエラーになった
@@ -16,8 +18,6 @@
           redirect_to events_path(イベント一覧ページ)をしているので、特にcurrent_eventを使うところはない。 -->
     </div>
   <% end %>
-  
-  <p><%= current_event.description if current_event.description.present? %></p>
   
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
