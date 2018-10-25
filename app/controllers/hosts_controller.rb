@@ -12,7 +12,7 @@ class HostsController < ApplicationController
       redirect_to events_path(@host), flash: { success: "アカウントを作成しました" }
     else
       render :new
-      #コントローラーの中はコロンつけてアクション名でいける！
+      #コントローラーの中はアクション名をシンボルで渡してあげればOK！
     end
   end
 
@@ -20,6 +20,7 @@ class HostsController < ApplicationController
     
     def host_params
       params.require(:host).permit(:name, :email, :password, :password_confirmation)
+      #strong parameterの詳細な説明はphotos_controllerにある
     end
     
 end

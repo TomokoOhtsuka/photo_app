@@ -30,7 +30,11 @@ class EventsController < ApplicationController
 #    if logged_in? || guest_logged_in?
       #@photo = current_event.photos.build
       @photo = Photo.new
-      @photos = current_event.photos
+      @event = Event.find_by!(name: params[:id])
+      #@photos = current_event.photos
+      @photos = @event.photos
+                          #！をつけることで、見つからなかった時に、「見つからなかったよ」とエラーを出してくれる
+                          #！がないと、nilクラスにメソッドつけられないよっていうエラーが出てしまう。
 #    else
 #      render :login_view
 #    end
@@ -38,8 +42,8 @@ class EventsController < ApplicationController
   
   def guest_login_view # (GET)
     # ログイン画面をだす(newアクション的な役割)
-    photo = Photo.find_by(id: params[:id])
-    @event_id = current_event.id || photo.event_id
+    # photo = Photo.find_by(id: params[:id])
+    # @event_id = current_event.id || photo.event_id
   end
   
   def guest_login # (POST:create的な役割)
@@ -47,7 +51,7 @@ class EventsController < ApplicationController
     if params[:event][:guest_password] == current_event.guest_password
     #    sessionに合言葉を入れる
       session[:guest_password] = params[:event][:guest_password]
-      redirect_to event_path(current_event), flash: { success: "ログインしました" }
+      redirect_to event_path(current_event.name), flash: { success: "ログインしました" }
     else
       flash.now[:danger] = "ゲストパスワードを入力してください"
       render :guest_login_view
@@ -56,11 +60,11 @@ class EventsController < ApplicationController
   
   def guest_logout
     session[:guest_password] = nil
-    redirect_to login_event_path, flash: { success: "ログアウトしました" }
+    redirect_to login_event_path(current_event.name), flash: { success: "ログアウトしました" }
   end
   
   def destroy
-    @event = Event.find_by(id: params[:id])
+    @event = Event.find_by!(name: params[:id])
     @event.destroy
     redirect_to events_path
     flash.now[:success] = "イベントを削除しました"
@@ -69,7 +73,7 @@ class EventsController < ApplicationController
   private
   #メソッドはprivateの中に書く必要がある
     def event_params
-      params.require(:event).permit(:title, :guest_password, :description)
+      params.require(:event).permit(:title, :name, :guest_password, :description)
                      #↑このeventはform_forからきている
     end
 end

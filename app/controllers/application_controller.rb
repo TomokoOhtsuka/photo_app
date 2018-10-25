@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
         unless guest_logged_in?
           store_location
           flash[:danger] = "ゲストログインしてください"
-          redirect_to event_login_path
+          redirect_to login_event_path(current_event.name)
         end
       end
 
@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
     def forbid_logged_in_guest
       if guest_logged_in?
         flash[:danger] = "すでにゲストとしてログインしています"
-        redirect_to event_path(current_event)
+        redirect_to event_path(current_event.name)
       end
     end
 end

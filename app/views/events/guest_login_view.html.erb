@@ -4,7 +4,7 @@
     <div class="col-md-4 col-md-offset-4">
       <h2>ゲストとしてログインする</h2>
       <!--モデルに紐づかないフォームなのでform_tagを使用する-->
-      <%= form_tag(url: "/events/#{@event_id}/login", method: :post) do %>
+      <%= form_tag(url: "/events/#{current_event.name}/login", method: :post) do %>
 
         <%= label_tag :guest_password, "ゲストパスワード" %>
         <%= password_field :event, :guest_password, class: "form-control" %>

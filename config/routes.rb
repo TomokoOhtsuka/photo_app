@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   #new, create, show, edit, update, index, destroy
   #使わないものがある場合、onlyで使うもの or exceptで使わないものを指定する
   resources :hosts
-  resources :photos, only:[:create, :show, :destroy]
   resources :events, only:[:new, :create, :index, :show, :destroy] do
+    resources :photos, only:[:create, :show, :destroy]
     member do
       get    "/login"  => "events#guest_login_view"
       post   "/login"  => "events#guest_login"

@@ -8,7 +8,7 @@
 
     <% @events.each do |event| %>
       <div class="albums-index">
-        <%= link_to(event_path(event)) do %>
+        <%= link_to(event_path(event.name)) do %>
                             <!--↑この引数の部分で、イベントのidを取ってきている-->
           <%= event.title %><br>
           <%= event.description if event.description.present? %>

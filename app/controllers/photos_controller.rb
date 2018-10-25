@@ -6,12 +6,11 @@ class PhotosController < ApplicationController
     #if !logged_in?
      # logged_in_guest
     #end
-    
     @photo = Photo.new(photo_params)
     #@photo = current_event.photos.build(photo_params)
     # ↑photo_paramsで:event_id渡しているので、buildでなくてnewするだけでphotoがevent_idに紐づく。
     if @photo.save
-      redirect_to event_path(current_event), flash: {success: "写真をアップロードしました"}
+      redirect_to event_path(current_event.name), flash: {success: "写真をアップロードしました"}
       #redirect_to event_pathだけではダメ。(どこのevent？ってなっちゃう)
       #引数をcurrent_eventと与えることで、event_idが入る。
       #redirect_to ("/events/#{@photo.event_id}"), flash: {success: "写真をアップロードしました"}
@@ -40,5 +39,9 @@ class PhotosController < ApplicationController
       #events/show(投稿フォーム)でhidden_fieldでフォームでevent_idを受け取るようにしているから、
       #strong parameterでevent_idをpermitしてあげる
       #→ヘルパーのcurrent_eventでハッシュで呼び出されるようにする
+      
+      #不正な値を取り込まないようにするというのがstrong parameterがある意味です。
+      #permitの中に書かれているもの以外のキーを取り入れないため、
+      #permit(:event_id)をしないとevent_idは取れないです。
     end
 end

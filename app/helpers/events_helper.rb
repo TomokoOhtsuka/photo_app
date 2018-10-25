@@ -1,14 +1,16 @@
 module EventsHelper
   
-  def current_event 
+  def current_event
+    event_id = params[:id] || params.require(:photo).permit(:event_name)[:event_name] || params.require(:photo).permit(:event_id)[:event_id]
+    Event.find_by(name: event_id)
     # params[:id] => event_controllerのとき
     # params.require(:photo).permit(:event_id)[:event_id] => photo_controllerのとき
-    #パラメーターの値は、コントローラーによって取ってくるものが違う！
-    @event_id = params[:id] || params.require(:photo).permit(:event_id)[:event_id]
+    #パラメーターの値は、コントent_ローラーによって取ってくるものが違う！
+    # @event_id = params[:id] || params.require(:photo).permit(:event_id)[:event_id]
     #params.require(:photo).permit(:event_id)の結果が、
     # { event_id: 1 }というハッシュで返ってくるから、値をとるときは[:event_id]をつける必要がある
-    photo = Photo.find_by(id: @event_id)
-    @current_event ||= Event.find_by(id: @event_id) || photo.event_id
+    #photo = Photo.find_by(id: @event_id)
+    #@current_event ||= Event.find_by(name: @event_id) || photo.event_id
                                                     #events/showでlogoutならcurrent_eventで持ってこれるけど
                                                     #photos/index画面でlogoutするとevent_id持ってこれないから
                                                     #その場合はphotoに紐づいたイベントIDをもってくるようにする

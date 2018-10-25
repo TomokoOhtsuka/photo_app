@@ -2,6 +2,8 @@
   <div id="error_explanation">
     <div class="alert alert-danger">
       The form contains <%= pluralize(object.errors.count, "error") %>.
+        <!-- pluralizeメソッドは"0errors"、"1error"、"2errors"とエラーの数に応じて
+        　単数/複数形にしてくれるため、"1errors"のような文法に合わない表現を避けられる -->
     </div>
     <ul class="error_messages">
     <% object.errors.full_messages.each do |msg| %>
