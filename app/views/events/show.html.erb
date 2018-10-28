@@ -4,12 +4,12 @@
   <% if logged_in? %>
     <div class="share">
       <h2>フォトアルバムを共有する(以下の情報をゲストにお伝えください)</h2>
-        <p><%= request.url %>/login<br>
+        <p><%= request.url %><br>
            ゲストパスワード：<%= current_event.guest_password %></p>
         
       <h2>OR</h2>  
       <%= link_to("このフォトアルバムを削除する", event_path(current_event.name), method: :delete, 
-                                                    #current_event必要！！
+                                                    #current_event.name必要！(詳細説明下に)
                                                     #{method: "delete"}だとconfirmつけたらエラーになった
           data: { confirm: '削除すると元には戻せません。本当に削除しますか?' })%>
       <!--ここはまだcurrent_eventは削除されていなくて、削除するアクションへのリンクをつけてあげているだけ。
@@ -35,7 +35,11 @@
   <!--写真一覧-->
   <% @photos.each do |photo| %>
     <div class="thumbnail">
-        <%= link_to image_tag(photo.image.thumb.url), photo %>
-　      <!--".url"は、carrierwaveが自動的に、photo(モデル名).image(カラム名)で持ってきたオブジェクトをURLにするもの-->
+      <%= link_to image_tag(photo.image.thumb.url), event_photo_path(current_event.name, photo.id) %>
+      <!--".url"は、carrierwaveが自動的に、photo(モデル名).image(カラム名)で持ってきたオブジェクトをURLにするもの-->
+      <!--ルーティングのresourcesでphotoがeventにネストされているから、event_photo_pathの引数は
+      　　どのイベントか教えてあげるものと、どの写真か教えてあげるものと、ふたつ必要になる。
+      　　参考：https://sil.hatenablog.com/entry/rails-nested-resource-by-scaffold -->
 　   </div>
   <% end %>
+</div>

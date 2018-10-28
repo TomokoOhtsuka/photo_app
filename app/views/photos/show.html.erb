@@ -4,7 +4,7 @@
 
 <% if logged_in? %>
   <div class="delete">
-    <%= link_to("写真を削除する", photo_path, method: :delete,
+    <%= link_to("写真を削除する", event_photo_path, method: :delete,
                 data: { confirm: '削除すると元には戻せません。本当に削除しますか?' })%>
   </div>
 <% end %>

@@ -30,6 +30,7 @@ class EventsController < ApplicationController
 #    if logged_in? || guest_logged_in?
       #@photo = current_event.photos.build
       @photo = Photo.new
+      #binding.pry
       @event = Event.find_by!(name: params[:id])
       #@photos = current_event.photos
       @photos = @event.photos
@@ -60,7 +61,7 @@ class EventsController < ApplicationController
   
   def guest_logout
     session[:guest_password] = nil
-    redirect_to login_event_path(current_event.name), flash: { success: "ログアウトしました" }
+    #redirect_to login_event_path(current_event.name), flash: { success: "ログアウトしました" }
   end
   
   def destroy

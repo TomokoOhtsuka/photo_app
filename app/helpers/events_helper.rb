@@ -2,7 +2,7 @@ module EventsHelper
   
   def current_event
     event_id = params[:id] || params.require(:photo).permit(:event_name)[:event_name] || params.require(:photo).permit(:event_id)[:event_id]
-    Event.find_by(name: event_id)
+    Event.find_by!(name: event_id)
     # params[:id] => event_controllerのとき
     # params.require(:photo).permit(:event_id)[:event_id] => photo_controllerのとき
     #パラメーターの値は、コントent_ローラーによって取ってくるものが違う！

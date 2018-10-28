@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   end
   #onlyとmemberの併用はこんなかんじで、
   #onlyがあればonlyで通常通り指定、その他に付け加えたいURLがあればmemberで追加する。
-  
+  #events/1/photosなどとしたい場合は、resources eventsの中にresources photosをネストしてあげれば良い。
+  #ネストした時のform_forの使い方：https://qiita.com/ayacai115/items/fbffe85e22986d8ea91a
+  #ネストの使い方全般(viewやcontrollerの書き方など)：https://sil.hatenablog.com/entry/rails-nested-resource-by-scaffold
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   #ルーティングを確認したいときは、コマンドにrake routesと打ち込むと見られる。

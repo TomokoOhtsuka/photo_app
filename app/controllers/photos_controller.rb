@@ -28,9 +28,11 @@ class PhotosController < ApplicationController
   
   def destroy
     @photo = Photo.find_by(id: params[:id])
-    event_page = @photo.event_id
+    event = Event.find_by(id: @photo.event_id)
+    #↑@photo.deleteしてしまうと、@photoからeventを取ってこられなくなってしまうから、
+    #deleteする前に変数eventに@photoからとってきたイベントの情報を入れておく。
     @photo.delete
-    redirect_to event_path(event_page)
+    redirect_to event_path(event.name), flash: {success: "写真を削除しました"}
   end
   
   private
