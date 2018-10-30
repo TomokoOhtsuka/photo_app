@@ -1,0 +1,29 @@
+<% provide(:title,'Edit') %>
+<% #image_tag("basketflower.jpg", class: "background-photo") %>
+<div class="login-and-signup-page">
+  <h2>ユーザー情報の編集</h2>
+  <!--以下とりあえずhosts/newのコピペ-->
+  <div class="row">
+    <div class=" form col-md-4 col-md-offset-4">
+      <%= form_for(@host) do |f| %>
+        <%= render "shared/error.messages", object: f.object %>
+      
+        <%= f.label :name, "ユーザーネーム" %>
+        <%= f.text_field :name, class: "form-control" %>
+
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.email_field :email, class: "form-control" %>
+
+        <%= f.label :password, "新しいパスワード" %>
+        <%= f.password_field :password, class: "form-control" %>
+
+        <%= f.label :password_confirmation, "新しいパスワード(確認)" %>
+        <%= f.password_field :password_confirmation, class: "form-control" %>
+
+        <%= f.submit "アカウント情報変更", class: "btn btn-primary" %>
+        <!--送り先を指定しなくても、form_forの@host(new/editで定義)にidが入っていればpatchに、いなければcreateに、
+        　　Railsが判断して自動で持って行ってくれる-->
+      <% end %>
+    </div>
+  </div>
+</div>

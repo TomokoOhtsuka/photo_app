@@ -278,6 +278,7 @@ input {
   height: 1000px;
   background-image: image-url("balloon4.jpg");
   background-size: cover;
+  background-repeat: repeat-y; /*←? 縦方向にリピートさせたい…*/
   
   .btn{
     margin-bottom: 20px;

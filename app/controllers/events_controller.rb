@@ -4,6 +4,9 @@ class EventsController < ApplicationController
   before_action :forbid_logged_in_host,  only:[:guest_login_view, :guest_login]
   before_action :forbid_logged_in_guest, only:[:guest_login_view, :guest_login]
   
+  #－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+  
+  #eventsの作成、修正、削除など
   def new
    @event = current_host.events.build if logged_in?
   end
@@ -26,21 +29,38 @@ class EventsController < ApplicationController
     @events = current_host.events
   end
   
-  def show
-#    if logged_in? || guest_logged_in?
-      #@photo = current_event.photos.build
+  def show #photos/newの役割も担う
       @photo = Photo.new
-      #binding.pry
       @event = Event.find_by!(name: params[:id])
+                        #！をつけることで、見つからなかった時に、「見つからなかったよ」とエラーを出してくれる
+                        #！がないと、nilクラスにメソッドつけられないよっていうエラーが出てしまう。
       #@photos = current_event.photos
       @photos = @event.photos
-                          #！をつけることで、見つからなかった時に、「見つからなかったよ」とエラーを出してくれる
-                          #！がないと、nilクラスにメソッドつけられないよっていうエラーが出てしまう。
-#    else
-#      render :login_view
-#    end
+  end
+
+  def edit
+    @event = Event.find_by!(name: params[:id])
   end
   
+  def update
+    @event = Event.find_by!(name: params[:id])
+    if @event.update_attributes(event_params)
+      redirect_to event_path(@event.name), flash: { success: "アルバム情報を編集しました" }
+    else
+      render :edit
+    end
+  end
+  
+  def destroy
+    @event = Event.find_by!(name: params[:id])
+    @event.destroy
+    redirect_to events_path
+    flash.now[:success] = "イベントを削除しました"
+  end
+  
+  #－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+  
+  #ゲストのログイン/ログアウトに関するアクション
   def guest_login_view # (GET)
     # ログイン画面をだす(newアクション的な役割)
     # photo = Photo.find_by(id: params[:id])
@@ -61,14 +81,7 @@ class EventsController < ApplicationController
   
   def guest_logout
     session[:guest_password] = nil
-    #redirect_to login_event_path(current_event.name), flash: { success: "ログアウトしました" }
-  end
-  
-  def destroy
-    @event = Event.find_by!(name: params[:id])
-    @event.destroy
-    redirect_to events_path
-    flash.now[:success] = "イベントを削除しました"
+    redirect_to login_event_path(current_event.name), flash: { success: "ログアウトしました" }
   end
   
   private

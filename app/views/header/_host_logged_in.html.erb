@@ -2,5 +2,11 @@
 <div id="header-link">
   <li><%= link_to(@current_host.name, events_path) %></li>
   <li><%= link_to("concept", "/about")%></li>
+  <% if controller_name == "events" && action_name == "index" %>
+    <!-- if文などの条件分岐でビューやコントローラーを指定したい：https://teratail.com/questions/51322 -->
+    <li><%= link_to("ユーザー情報の編集", edit_host_path(current_host))%></li>
+  <% elsif controller_name == "events" && action_name == "show" %>
+    <li><%= link_to("アルバム情報の編集", edit_event_path(current_event.name))%></li>
+  <% end %>
   <li><%= link_to("logout", "/logout", {method: "post"} )%></li>
 </div>

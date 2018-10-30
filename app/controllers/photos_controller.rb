@@ -3,21 +3,23 @@ class PhotosController < ApplicationController
   before_action :logged_in_host, only:[:destroy]
   
   def create
-    #if !logged_in?
-     # logged_in_guest
-    #end
     @photo = Photo.new(photo_params)
+    @photo.event_id = current_event.id
+    #@photo = Photo.new(photo_params)
     #@photo = current_event.photos.build(photo_params)
-    # ↑photo_paramsで:event_id渡しているので、buildでなくてnewするだけでphotoがevent_idに紐づく。
+    # ↑photo_paramsで:event_id渡しているので、buildでなくてnewするだけでphotoがevent_idに紐づくはずだったんだけど、
+    #このままだとphotosのevent_idがEvent#idではなくEvent#nameの値が入ってしまうので(event/show.html.erbのhidden_field変えたから)
+    #buildしてeventと紐づける。
     if @photo.save
       redirect_to event_path(current_event.name), flash: {success: "写真をアップロードしました"}
       #redirect_to event_pathだけではダメ。(どこのevent？ってなっちゃう)
       #引数をcurrent_eventと与えることで、event_idが入る。
       #redirect_to ("/events/#{@photo.event_id}"), flash: {success: "写真をアップロードしました"}
     else
+      @event = current_event
       @photos = current_event.photos
       render "events/show"
-      #renderはcontrollerを経由しないので、ここでviewで使っている変数(=ここの場合は@photos)を
+      #renderはcontrollerを経由しないので、ここでviewで使っている変数(=ここの場合は@event、@photos)を
       #改めて定義してあげないと、値がnilだよって怒られる。
     end
   end
@@ -37,7 +39,7 @@ class PhotosController < ApplicationController
   
   private
     def photo_params
-      params.require(:photo).permit(:image, :event_id)
+      params.require(:photo).permit(:image)
       #events/show(投稿フォーム)でhidden_fieldでフォームでevent_idを受け取るようにしているから、
       #strong parameterでevent_idをpermitしてあげる
       #→ヘルパーのcurrent_eventでハッシュで呼び出されるようにする
