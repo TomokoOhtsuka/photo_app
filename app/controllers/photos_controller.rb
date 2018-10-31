@@ -5,7 +5,6 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
     @photo.event_id = current_event.id
-    #@photo = Photo.new(photo_params)
     #@photo = current_event.photos.build(photo_params)
     # ↑photo_paramsで:event_id渡しているので、buildでなくてnewするだけでphotoがevent_idに紐づくはずだったんだけど、
     #このままだとphotosのevent_idがEvent#idではなくEvent#nameの値が入ってしまうので(event/show.html.erbのhidden_field変えたから)
@@ -17,6 +16,7 @@ class PhotosController < ApplicationController
       #redirect_to ("/events/#{@photo.event_id}"), flash: {success: "写真をアップロードしました"}
     else
       @event = current_event
+      @event.id = current_event.name
       @photos = current_event.photos
       render "events/show"
       #renderはcontrollerを経由しないので、ここでviewで使っている変数(=ここの場合は@event、@photos)を

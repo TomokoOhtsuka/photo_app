@@ -1,0 +1,36 @@
+ja:
+  activerecord:
+    models:
+      host: ユーザー
+    attributes:
+      host:
+        id: ID
+        created_at: 登録日時
+        updated_at: 更新日時
+        name: ユーザー名
+        email: メールアドレス
+        password_digest: パスワード
+
+  activerecord:
+    models:
+      event: アルバム
+    attributes:
+      event:
+        id: ID
+        created_at: 登録日時
+        updated_at: 更新日時
+        title: アルバム名
+        host_id: ユーザーID
+        description: メモ
+        guest_password: ゲスト通知用パスワード
+
+  activerecord:
+    models:
+      photo: 写真
+    attributes:
+      photo:
+        id: ID
+        created_at: 登録日時
+        updated_at: 更新日時
+        image: 画像
+        event_id: アルバムのID
